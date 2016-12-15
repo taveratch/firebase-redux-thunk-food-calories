@@ -5,7 +5,7 @@ class Page extends React.Component {
   componentDidMount() {
     this.props.loadFood()
   }
-  
+
 	render() {
     let food = this.props.food
     return (

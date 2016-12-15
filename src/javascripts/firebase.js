@@ -9,20 +9,13 @@ export const init = (user) => {
     messagingSenderId: "503545191107"
 	};
 	firebase.initializeApp(config);
-	// firebase.auth().signInWithEmailAndPassword("taweesoft@gmail.com", "somesome").catch(function(error) {
-	// 	// Handle Errors here.
-	// 	var errorCode = error.code;
-	// 	var errorMessage = error.message;
-  //   console.log(errorMessage);
-	// 	// ...
-	// });
 	database = firebase.database()
 }
 
-export const listenFood = () => {
-	let users = database.ref('food')
-	users.on('value', (val) => {
-		console.log(val.val());
+export const listenFood = (store, receiveFood) => {
+	let food = database.ref('food')
+	food.on('value', (val) => {
+		store.dispatch(receiveFood(val.val()))
 	})
 }
 

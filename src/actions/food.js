@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import {getFood} from 'javascripts/firebase'
 
-const receiveFood = (food) => {
+export const receiveFood = (food) => {
   return {
     type: 'LOAD_FOOD_SUCCESS',
     food
