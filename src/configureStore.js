@@ -1,5 +1,6 @@
 import reducers from './reducers/index'
 import {createStore, applyMiddleware} from 'redux'
+import thunk from 'redux-thunk'
 
 const promise = (store) => {
   const next = store.dispatch
@@ -9,12 +10,6 @@ const promise = (store) => {
     }
     return next(action)
   }
-}
-
-const thunk = (store) => (next) => (action) => {
-  typeof action === 'function' ?
-    action(store.dispatch, store.getState) :
-    next(action)
 }
 
 export default () => {
